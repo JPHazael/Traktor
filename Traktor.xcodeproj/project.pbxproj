@@ -8,20 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		843342011E844AC600535A43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843342001E844AC600535A43 /* AppDelegate.swift */; };
-		843342031E844AC600535A43 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843342021E844AC600535A43 /* ViewController.swift */; };
+		843342031E844AC600535A43 /* TraktClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843342021E844AC600535A43 /* TraktClient.swift */; };
 		843342061E844AC600535A43 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843342041E844AC600535A43 /* Main.storyboard */; };
 		843342081E844AC600535A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 843342071E844AC600535A43 /* Assets.xcassets */; };
 		8433420B1E844AC600535A43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 843342091E844AC600535A43 /* LaunchScreen.storyboard */; };
+		843342131E85553000535A43 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843342121E85553000535A43 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		843341FD1E844AC600535A43 /* Traktor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Traktor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		843342001E844AC600535A43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		843342021E844AC600535A43 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		843342021E844AC600535A43 /* TraktClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TraktClient.swift; sourceTree = "<group>"; };
 		843342051E844AC600535A43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		843342071E844AC600535A43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8433420A1E844AC600535A43 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8433420C1E844AC600535A43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		843342121E85553000535A43 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +57,9 @@
 			isa = PBXGroup;
 			children = (
 				843342001E844AC600535A43 /* AppDelegate.swift */,
-				843342021E844AC600535A43 /* ViewController.swift */,
+				843342021E844AC600535A43 /* TraktClient.swift */,
 				843342041E844AC600535A43 /* Main.storyboard */,
+				843342121E85553000535A43 /* Constants.swift */,
 				843342071E844AC600535A43 /* Assets.xcassets */,
 				843342091E844AC600535A43 /* LaunchScreen.storyboard */,
 				8433420C1E844AC600535A43 /* Info.plist */,
@@ -137,8 +140,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				843342031E844AC600535A43 /* ViewController.swift in Sources */,
+				843342031E844AC600535A43 /* TraktClient.swift in Sources */,
 				843342011E844AC600535A43 /* AppDelegate.swift in Sources */,
+				843342131E85553000535A43 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +271,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = JPDaines.Traktor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -280,6 +285,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = JPDaines.Traktor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};
