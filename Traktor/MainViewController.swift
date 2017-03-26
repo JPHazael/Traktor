@@ -20,14 +20,11 @@ class MainViewController: UIViewController {
         
         arrayMovies = NSMutableArray()
         
-        TraktClient.sharedInstance.getTrendingMovies(arrayResults: arrayMovies!) { (response, error) in
-            
+        TraktClient.sharedInstance.getTrendingMovies { (moviesArray, error) in
             if error == nil{
-                TraktClient.sharedInstance.getIDs(fromResult: response as! [[String : AnyObject]])
+                print(moviesArray.count)
             }
-
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
