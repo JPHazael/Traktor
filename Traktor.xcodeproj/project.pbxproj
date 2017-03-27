@@ -16,6 +16,10 @@
 		843342191E85723100535A43 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843342181E85723100535A43 /* Movie.swift */; };
 		8433421F1E883CCC00535A43 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8433421E1E883CCC00535A43 /* MovieCell.swift */; };
 		843342211E8851A100535A43 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843342201E8851A100535A43 /* MoviesViewController.swift */; };
+		843342231E88A45400535A43 /* CustomizableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843342221E88A45400535A43 /* CustomizableButton.swift */; };
+		843342251E88A46100535A43 /* CustomizableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843342241E88A46100535A43 /* CustomizableImageView.swift */; };
+		8433422A1E88AAF300535A43 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843342291E88AAF300535A43 /* SCLAlertView.swift */; };
+		8433422E1E88AE6400535A43 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8433422D1E88AE6400535A43 /* Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,12 @@
 		843342181E85723100535A43 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		8433421E1E883CCC00535A43 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		843342201E8851A100535A43 /* MoviesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
+		843342221E88A45400535A43 /* CustomizableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableButton.swift; sourceTree = "<group>"; };
+		843342241E88A46100535A43 /* CustomizableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableImageView.swift; sourceTree = "<group>"; };
+		843342291E88AAF300535A43 /* SCLAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCLAlertView.swift; sourceTree = "<group>"; };
+		8433422B1E88AE6300535A43 /* Traktor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Traktor-Bridging-Header.h"; sourceTree = "<group>"; };
+		8433422C1E88AE6400535A43 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		8433422D1E88AE6400535A43 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,18 +72,64 @@
 		843341FF1E844AC600535A43 /* Traktor */ = {
 			isa = PBXGroup;
 			children = (
-				843342001E844AC600535A43 /* AppDelegate.swift */,
-				843342021E844AC600535A43 /* TraktClient.swift */,
-				843342041E844AC600535A43 /* Main.storyboard */,
-				843342201E8851A100535A43 /* MoviesViewController.swift */,
-				8433421E1E883CCC00535A43 /* MovieCell.swift */,
-				843342121E85553000535A43 /* Constants.swift */,
-				843342181E85723100535A43 /* Movie.swift */,
+				8433422F1E8923E000535A43 /* Supporting Files */,
+				843342301E8923F800535A43 /* Storyboards */,
+				843342271E88A47E00535A43 /* Controller */,
+				843342281E88A49D00535A43 /* View */,
+				843342261E88A46800535A43 /* Model */,
 				843342071E844AC600535A43 /* Assets.xcassets */,
-				843342091E844AC600535A43 /* LaunchScreen.storyboard */,
-				8433420C1E844AC600535A43 /* Info.plist */,
 			);
 			path = Traktor;
+			sourceTree = "<group>";
+		};
+		843342261E88A46800535A43 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				843342021E844AC600535A43 /* TraktClient.swift */,
+				843342121E85553000535A43 /* Constants.swift */,
+				843342181E85723100535A43 /* Movie.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		843342271E88A47E00535A43 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8433421E1E883CCC00535A43 /* MovieCell.swift */,
+				843342201E8851A100535A43 /* MoviesViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		843342281E88A49D00535A43 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				843342291E88AAF300535A43 /* SCLAlertView.swift */,
+				843342221E88A45400535A43 /* CustomizableButton.swift */,
+				843342241E88A46100535A43 /* CustomizableImageView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		8433422F1E8923E000535A43 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				843342001E844AC600535A43 /* AppDelegate.swift */,
+				8433422C1E88AE6400535A43 /* Reachability.h */,
+				8433422D1E88AE6400535A43 /* Reachability.m */,
+				8433420C1E844AC600535A43 /* Info.plist */,
+				8433422B1E88AE6300535A43 /* Traktor-Bridging-Header.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		843342301E8923F800535A43 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				843342041E844AC600535A43 /* Main.storyboard */,
+				843342091E844AC600535A43 /* LaunchScreen.storyboard */,
+			);
+			name = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +165,7 @@
 					843341FC1E844AC600535A43 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = XS5FRJH7AZ;
+						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -149,11 +206,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				843342231E88A45400535A43 /* CustomizableButton.swift in Sources */,
 				843342031E844AC600535A43 /* TraktClient.swift in Sources */,
 				843342011E844AC600535A43 /* AppDelegate.swift in Sources */,
 				8433421F1E883CCC00535A43 /* MovieCell.swift in Sources */,
+				8433422E1E88AE6400535A43 /* Reachability.m in Sources */,
+				8433422A1E88AAF300535A43 /* SCLAlertView.swift in Sources */,
 				843342131E85553000535A43 /* Constants.swift in Sources */,
 				843342191E85723100535A43 /* Movie.swift in Sources */,
+				843342251E88A46100535A43 /* CustomizableImageView.swift in Sources */,
 				843342211E8851A100535A43 /* MoviesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,11 +338,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = XS5FRJH7AZ;
 				INFOPLIST_FILE = Traktor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JPDaines.Traktor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Traktor/Traktor-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -291,11 +355,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = XS5FRJH7AZ;
 				INFOPLIST_FILE = Traktor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = JPDaines.Traktor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Traktor/Traktor-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

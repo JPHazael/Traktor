@@ -21,5 +21,6 @@ struct Movie {
     var posterURL: String!
     var trailerURL: String!
     var rating: String!
+    var ytKey: String!
 
 }

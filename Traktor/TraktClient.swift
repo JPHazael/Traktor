@@ -16,7 +16,7 @@ class TraktClient : NSObject {
     
     static let sharedInstance = TraktClient()
     
-    var moviesArray = [Movie]()
+    //var moviesArray = [Movie]()
 
 
     func getTrendingMovies(completionHandler:@escaping (_ moviesArray: [Movie], _ error: NSError?) -> Void)  {
@@ -97,6 +97,10 @@ class TraktClient : NSObject {
     // Save TMDB info to a dictionary of Movie Structs
     
     func createMoviesArray(from results:[[String:AnyObject]], completion: @escaping (_ moviesArray: [Movie])-> Void){
+        
+        var moviesArray = [Movie]()
+
+        
         for i in 0  ..< results.count{
             let result = results[i]
             
@@ -119,6 +123,7 @@ class TraktClient : NSObject {
             if let videos = result["videos"]{
                 if let vidResults = videos.value(forKey: "results") as? [[String: AnyObject]]{
                     newMovie.trailerURL = createTrailerURL(for: vidResults)
+                    newMovie.ytKey = getYouTubeKey(for: vidResults)
                 }
             }
             
@@ -242,9 +247,21 @@ class TraktClient : NSObject {
             let youTubeURL = "https://www.youtube.com/watch?v=\(key)"
             return youTubeURL
         } else {
-            return "Not Available"
+            return "XXX"
         }
         
     }
+    
+    func getYouTubeKey(for vidResults:[[String: AnyObject]])->String{
+        let trailerDict = vidResults[0]
+        
+        if trailerDict["key"] != nil {
+            let key = String(describing: trailerDict["key"]!)
+            return key
+        } else {
+          return "XXX"
+        }
+    }
+    
 }
 

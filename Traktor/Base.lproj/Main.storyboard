@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPi-ay-4cN">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPi-ay-4cN" customClass="CustomizableButton" customModule="Traktor" customModuleProvider="target">
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="77" id="KBc-Qc-kbo"/>
@@ -29,6 +29,20 @@
                                 <state key="normal" title="Load the newest trending movies!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="refreshWasPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fbs-aX-pYc"/>
+                                </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" indicatorStyle="white" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gGP-qh-zkS">
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,10 +60,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="739" height="805"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="sYR-Uo-1OG">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="sYR-Uo-1OG" customClass="CustomizableImageView" customModule="Traktor" customModuleProvider="target">
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="429" id="b74-EJ-8te"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="25"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="X6U-Wa-t0Z">
                                                     <constraints>
@@ -68,7 +93,7 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre, Genre, Genre, Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y66-Hm-c2D">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre, Genre, Genre, Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="y66-Hm-c2D">
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="273" id="L8x-jK-9WE"/>
                                                     </constraints>
@@ -86,12 +111,12 @@
                                                 </textField>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lF2-cJ-it1">
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GxQ-c5-T8S">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GxQ-c5-T8S" customClass="CustomizableButton" customModule="Traktor" customModuleProvider="target">
                                                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="149" id="8rI-sr-SOq"/>
@@ -99,6 +124,20 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
                                                     <state key="normal" title="Watch the trailer!"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="playTrailer:" destination="qBg-vz-9PQ" eventType="touchUpInside" id="ysW-Pc-FAu"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -111,15 +150,15 @@
                                             <constraint firstItem="qam-Lt-dc1" firstAttribute="leading" secondItem="qBg-vz-9PQ" secondAttribute="leadingMargin" constant="28" id="Apk-Ft-lIU"/>
                                             <constraint firstItem="qam-Lt-dc1" firstAttribute="top" secondItem="X6U-Wa-t0Z" secondAttribute="bottom" constant="12" id="F1y-j3-lHd"/>
                                             <constraint firstItem="lF2-cJ-it1" firstAttribute="trailing" secondItem="y66-Hm-c2D" secondAttribute="trailing" constant="-4" id="MBT-I1-rH2"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="sYR-Uo-1OG" secondAttribute="trailing" constant="-8" id="Npm-CZ-28e"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="lF2-cJ-it1" secondAttribute="bottom" constant="52" id="OE3-MV-M4o"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="sYR-Uo-1OG" secondAttribute="trailing" constant="56" id="Npm-CZ-28e"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="lF2-cJ-it1" secondAttribute="bottom" constant="85" id="OE3-MV-M4o"/>
                                             <constraint firstItem="X6U-Wa-t0Z" firstAttribute="top" secondItem="sYR-Uo-1OG" secondAttribute="bottom" constant="11" id="RZd-oe-VIx"/>
                                             <constraint firstItem="GA5-WE-5hU" firstAttribute="trailing" secondItem="X6U-Wa-t0Z" secondAttribute="trailing" id="SBz-aM-oMc"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="GxQ-c5-T8S" secondAttribute="bottom" constant="28" id="SHI-na-MaS"/>
-                                            <constraint firstItem="X6U-Wa-t0Z" firstAttribute="centerX" secondItem="sYR-Uo-1OG" secondAttribute="centerX" constant="-4" id="TjC-Rx-Kcz"/>
+                                            <constraint firstItem="X6U-Wa-t0Z" firstAttribute="centerX" secondItem="sYR-Uo-1OG" secondAttribute="centerX" constant="-5" id="TjC-Rx-Kcz"/>
                                             <constraint firstItem="lF2-cJ-it1" firstAttribute="top" secondItem="GA5-WE-5hU" secondAttribute="bottom" constant="3" id="WCs-uU-foE"/>
                                             <constraint firstItem="X6U-Wa-t0Z" firstAttribute="leading" secondItem="qBg-vz-9PQ" secondAttribute="leadingMargin" constant="16" id="X0t-R4-iIH"/>
-                                            <constraint firstItem="sYR-Uo-1OG" firstAttribute="leading" secondItem="qBg-vz-9PQ" secondAttribute="leadingMargin" constant="-8" id="Yxg-xz-UrG"/>
+                                            <constraint firstItem="sYR-Uo-1OG" firstAttribute="leading" secondItem="qBg-vz-9PQ" secondAttribute="leadingMargin" constant="57" id="Yxg-xz-UrG"/>
                                             <constraint firstItem="lF2-cJ-it1" firstAttribute="leading" secondItem="GA5-WE-5hU" secondAttribute="leading" constant="-4" id="cWO-5k-Dgi"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="lF2-cJ-it1" secondAttribute="trailing" constant="24" id="tg2-kE-pJT"/>
                                             <constraint firstItem="sYR-Uo-1OG" firstAttribute="top" secondItem="qBg-vz-9PQ" secondAttribute="topMargin" constant="-8" id="wGD-cV-Hhv"/>
@@ -150,6 +189,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="gGP-qh-zkS" id="zTd-ED-dIU"/>
+                        <outlet property="refreshButton" destination="HPi-ay-4cN" id="cG0-pa-Bhm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
