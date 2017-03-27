@@ -9,8 +9,7 @@
 import UIKit
 
 class MoviesViewController: UIViewController {
-    
-    
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var refreshButton: UIButton!
     
@@ -44,68 +43,41 @@ class MoviesViewController: UIViewController {
     
     func setupMovies(){
         
-        
         refreshButton.titleLabel?.text = "Just a moment."
         refreshButton.isEnabled = false
         
         TraktClient.sharedInstance.getTrendingMovies { (movies, error) in
             if error == nil{
                 self.moviesArray = movies
-                print(self.moviesArray.count)
                 DispatchQueue.main.async {
                 self.refreshButton.titleLabel?.text = "Load the newest trending movies!"
                 self.refreshButton.isEnabled = true
                 self.collectionView!.reloadData()
+                    }
                 }
-            }
                 else {
                 let alert = SCLAlertView()
                 _ = alert.showWarning("OOPS", subTitle: "Something went wrong.")
-            
             }
         }
     }
-    
 }
-    extension MoviesViewController : UICollectionViewDataSource
-    {
-        
-        func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return 1
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            print("the movie count is \(moviesArray.count)")
 
-            return moviesArray.count
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
-            
-            cell.configureCell(for: moviesArray[indexPath.row])
-            
-            return cell
-        }
-    }
-
-
-// MARK: - UIIMAGEVIEW EXTENSION
-
-extension UIImageView{
+extension MoviesViewController : UICollectionViewDataSource{
     
-    func imageFromUrl(urlString: String) {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return moviesArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
-        let urlRequest = URLRequest(url: URL(string: urlString)!)
-        let task = URLSession.shared.dataTask(with: urlRequest){ (data, response, error) in
-            if error != nil {
-                print(error)
-                return
-            }
-            DispatchQueue.main.async {
-                self.image = UIImage(data: data!)
-            }
-        }
-        task.resume()
+        cell.configureCell(for: moviesArray[indexPath.row])
+        
+        return cell
     }
 }

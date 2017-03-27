@@ -22,41 +22,14 @@ class MovieCell: UICollectionViewCell {
     var youtubeLink: String!
     var youtubeURL: String!
 
-    
+    // MARK: - Cell Layout
     
     override func layoutSubviews() {
         super.layoutSubviews()
         self.layer.cornerRadius = 3.0
         self.clipsToBounds = false
-        
     }
-    
-    
-    func disableTrailerButton(for key: String){
-        if key == "XXX"{
-            trailerButton.isEnabled = false
-            trailerButton.titleLabel?.text  = "Not Available"
-        }
-    }
-    
-    
-    func configureCell(for movie: Movie){
-        
-        self.titleLabel.text = movie.title
-        self.genreLabel.text = movie.genres.joined(separator: ", ")
-        self.ratingLabel.text = movie.rating
-        self.descriptionTextView.text = movie.movieDescription
-        self.taglineTextfield.text = movie.tagline
-        self.imageView.imageFromUrl(urlString: movie.posterURL)
-        self.youtubeLink = movie.trailerURL
-        self.youtubeURL = "youtube://\(movie.ytKey!)"
-        self.disableTrailerButton(for: movie.ytKey!)
-        
-        
-        
-    }
-    
-    
+
     @IBAction func playTrailer(_ sender: UIButton) {
         
         // first try to open through the youtube app
@@ -66,9 +39,5 @@ class MovieCell: UICollectionViewCell {
             //if that doesnt work, open with the browser
            UIApplication.shared.open(URL(string: youtubeLink)!, options: [:], completionHandler: nil)
         }
-        
     }
-    
-    
-    
 }

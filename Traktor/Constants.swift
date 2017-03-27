@@ -20,16 +20,22 @@ extension TraktClient{
         
         //MARK: - TMDB URLS
         
-       static let TMDBDetailsURL =  "https://api.themoviedb.org/3/movie/157336?api_key=82e6ce64cce3c7687fa295b06ee204dd&language=en-US"
+    struct TMDBURLS{
         
-        static let TMDBTrailerURL = "http://api.themoviedb.org/3/movie/157336/videos?api_key=82e6ce64cce3c7687fa295b06ee204dd"
-        
-        static let TMDBKey = "82e6ce64cce3c7687fa295b06ee204dd"
-        
-        static let YouTubeLink = "https://www.youtube.com/watch?v=2LqzF5WauAw"
-        
-            static let PosterURL = "https://image.tmdb.org/t/p/w342/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg"
+       static let TMDBMovieURL =  "https://api.themoviedb.org/3/movie/"
+            
+        static let TMDBURLQuery = "?api_key=\(Constants.APIKeys.TMDBKey)&append_to_response=releases,videos"
+
+        static let YouTubeLink = "https://www.youtube.com/watch?v="
+        }
  
+        // MARK: API keys
+        
+        struct APIKeys{
+            static let TraktAPIKey = "20a813842de3f9735f8cb5cae45b7d83c170f9c31eacd4ca63e9473073241a50"
+            static let TMDBKey = "82e6ce64cce3c7687fa295b06ee204dd"
+            
+        }
 
         
         // MARK: Trakt Header Fields
@@ -45,19 +51,6 @@ extension TraktClient{
             static let ContentType = "application/json"
             static let APIVersion = "2"
             static let APIKey = "20a813842de3f9735f8cb5cae45b7d83c170f9c31eacd4ca63e9473073241a50"
-        }
-        
-        // MARK: JSON Response Keys
-        struct JSONResponseKeys {
-            static let Title = "title"
-            static let ID = "id"
-            static let Rating = "rating"
-            static let Description = "overview"
-            static let Tagline = "tagline"
-            static let Genres = "genres"
-            static let Trailer = "trailer"
-            static let Poster = "Poster"
-
         }
     }
 }

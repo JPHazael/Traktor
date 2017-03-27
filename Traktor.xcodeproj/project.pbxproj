@@ -20,6 +20,10 @@
 		843342251E88A46100535A43 /* CustomizableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843342241E88A46100535A43 /* CustomizableImageView.swift */; };
 		8433422A1E88AAF300535A43 /* SCLAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843342291E88AAF300535A43 /* SCLAlertView.swift */; };
 		8433422E1E88AE6400535A43 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 8433422D1E88AE6400535A43 /* Reachability.m */; };
+		844B12241E892D63003D3218 /* NetworkingConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B12231E892D63003D3218 /* NetworkingConvenience.swift */; };
+		844B12291E893080003D3218 /* ImageFromURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B12281E893080003D3218 /* ImageFromURL.swift */; };
+		844B122B1E8932D2003D3218 /* MovieCellHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B122A1E8932D2003D3218 /* MovieCellHelpers.swift */; };
+		844B122D1E893482003D3218 /* APIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B122C1E893482003D3218 /* APIHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		8433422B1E88AE6300535A43 /* Traktor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Traktor-Bridging-Header.h"; sourceTree = "<group>"; };
 		8433422C1E88AE6400535A43 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		8433422D1E88AE6400535A43 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		844B12231E892D63003D3218 /* NetworkingConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingConvenience.swift; sourceTree = "<group>"; };
+		844B12281E893080003D3218 /* ImageFromURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageFromURL.swift; sourceTree = "<group>"; };
+		844B122A1E8932D2003D3218 /* MovieCellHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCellHelpers.swift; sourceTree = "<group>"; };
+		844B122C1E893482003D3218 /* APIHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +93,7 @@
 		843342261E88A46800535A43 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				843342021E844AC600535A43 /* TraktClient.swift */,
-				843342121E85553000535A43 /* Constants.swift */,
+				844B12271E892EEA003D3218 /* Networking */,
 				843342181E85723100535A43 /* Movie.swift */,
 			);
 			name = Model;
@@ -97,6 +104,7 @@
 			children = (
 				8433421E1E883CCC00535A43 /* MovieCell.swift */,
 				843342201E8851A100535A43 /* MoviesViewController.swift */,
+				844B122A1E8932D2003D3218 /* MovieCellHelpers.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -107,6 +115,7 @@
 				843342291E88AAF300535A43 /* SCLAlertView.swift */,
 				843342221E88A45400535A43 /* CustomizableButton.swift */,
 				843342241E88A46100535A43 /* CustomizableImageView.swift */,
+				844B12281E893080003D3218 /* ImageFromURL.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -130,6 +139,17 @@
 				843342091E844AC600535A43 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		844B12271E892EEA003D3218 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				843342021E844AC600535A43 /* TraktClient.swift */,
+				844B122C1E893482003D3218 /* APIHelpers.swift */,
+				843342121E85553000535A43 /* Constants.swift */,
+				844B12231E892D63003D3218 /* NetworkingConvenience.swift */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +226,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844B122D1E893482003D3218 /* APIHelpers.swift in Sources */,
+				844B12291E893080003D3218 /* ImageFromURL.swift in Sources */,
 				843342231E88A45400535A43 /* CustomizableButton.swift in Sources */,
 				843342031E844AC600535A43 /* TraktClient.swift in Sources */,
 				843342011E844AC600535A43 /* AppDelegate.swift in Sources */,
@@ -214,8 +236,10 @@
 				8433422A1E88AAF300535A43 /* SCLAlertView.swift in Sources */,
 				843342131E85553000535A43 /* Constants.swift in Sources */,
 				843342191E85723100535A43 /* Movie.swift in Sources */,
+				844B122B1E8932D2003D3218 /* MovieCellHelpers.swift in Sources */,
 				843342251E88A46100535A43 /* CustomizableImageView.swift in Sources */,
 				843342211E8851A100535A43 /* MoviesViewController.swift in Sources */,
+				844B12241E892D63003D3218 /* NetworkingConvenience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,8 +16,8 @@ class TraktClient : NSObject {
     
     static let sharedInstance = TraktClient()
     
-    //var moviesArray = [Movie]()
-
+    
+    //MARK: - Build an array of Movie structs
 
     func getTrendingMovies(completionHandler:@escaping (_ moviesArray: [Movie], _ error: NSError?) -> Void)  {
         self.buildTraktRequest(forURL: Constants.BaseURL) { (request) in
@@ -65,11 +65,9 @@ class TraktClient : NSObject {
         var inforURLArray = [String]()
         
         for id in ids{
-            
-            let infoURL = "https://api.themoviedb.org/3/movie/\(id)?api_key=82e6ce64cce3c7687fa295b06ee204dd&append_to_response=releases,videos"
+            let infoURL = Constants.TMDBURLS.TMDBMovieURL + String(describing:id) + Constants.TMDBURLS.TMDBURLQuery
             
             inforURLArray.append(infoURL)
-            
         }
         completion(inforURLArray)
         
@@ -132,136 +130,10 @@ class TraktClient : NSObject {
                     newMovie.rating = getRating(from: countries)
                 }
             }
-            
-            print(newMovie.title, newMovie.tagline, newMovie.movieDescription, newMovie.genres, newMovie.rating, newMovie.posterURL, newMovie.trailerURL)
          moviesArray.append(newMovie)
         }
         completion(moviesArray)
     }
-    
-    
-    // MARK: Helpers
-    
-    
-    // Build the URL to get the trending movies from trakt
-    
-    
-    func buildTraktRequest(forURL urlString: String, completion: (_ request: URLRequest)-> Void){
-        let url = URL(string: urlString)!
-        var request = URLRequest(url: url)
-        
-        
-        request.addValue(Constants.HeaderValues.ContentType, forHTTPHeaderField: Constants.HeaderFields.ContentType)
-        request.addValue(Constants.HeaderValues.APIVersion, forHTTPHeaderField: Constants.HeaderFields.APIVersion)
-        request.addValue(Constants.HeaderValues.APIKey, forHTTPHeaderField: Constants.HeaderFields.APIKey)
-        
-        completion(request)
-    }
-    
-    // Create the data task and make sure you get a successful http response and the data exists
-    
-    func taskForGet (request: URLRequest, completionHandlerForGET:@escaping (_ result: AnyObject?, _ error: NSError?) -> Void)  {
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            
-            func sendError(error: String) {
-                print(error)
-                let userInfo = [NSLocalizedDescriptionKey : error]
-                completionHandlerForGET(nil, NSError(domain: "taskForGet", code: 1, userInfo: userInfo))
-            }
-            
-            /* GUARD: Was there an error? */
-            guard (error == nil) else {
-                sendError(error: "There was an error with your request: \(error)")
-                return
-            }
-            
-            /* GUARD: Did we get a successful 2XX response? */
-            guard let statusCode = (response as? HTTPURLResponse)?.statusCode , statusCode >= 200 && statusCode <= 299 else {
-                sendError(error: "Your request returned a status code other than 2xx!")
-                return
-            }
-            
-            /* GUARD: Was there any data returned? */
-            guard let data = data else {
-                sendError(error: "No data was returned by the request!")
-                return
-            }
-            /* 5/6. Parse the data and use the data (happens in completion handler) */
-            self.convertDataWithCompletionHandler(data: data as NSData, completionHandlerForConvertData: completionHandlerForGET)
-            
-        }
-        task.resume()
-        
-    }
-    
-    
-    // given raw JSON, return a usable Foundation object
-    func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
-        
-        var parsedResult: Any!
-        do {
-            parsedResult = try JSONSerialization.jsonObject(with: data as Data, options: .allowFragments)
-        } catch {
-            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            completionHandlerForConvertData(nil, NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
-        }
-        
-        
-        
-        completionHandlerForConvertData(parsedResult as AnyObject?, nil)
-    }
-    
-    
-    // from the array of all releases of a movie from all countries get the US releases
-    // then get an array of ratings for each US release and take the top entry from the array
-    
-    func getRating(from countries: [[String: AnyObject]])->String{
-        var certArray = [String]()
-        
-        for i in countries{
-            if String(describing: i["iso_3166_1"]!) == "US"{
-                if String(describing: i["certification"]!) != ""{
-                    let cert = String(describing:i["certification"]!)
-                    certArray.append(cert)
-                }
-            }
-        }
-        if certArray.isEmpty == false{
-            let finalCert = certArray[0]
-            return finalCert
-        } else{
-            return "Not Rated"
-        }
-    }
-    
-    
-   // get a youtube link for the trailer
-    
-    func createTrailerURL(for vidResults:[[String: AnyObject]])->String{
-        let trailerDict = vidResults[0]
-        
-        if trailerDict["key"] != nil {
-            let key = String(describing: trailerDict["key"]!)
-            let youTubeURL = "https://www.youtube.com/watch?v=\(key)"
-            return youTubeURL
-        } else {
-            return "XXX"
-        }
-        
-    }
-    
-    func getYouTubeKey(for vidResults:[[String: AnyObject]])->String{
-        let trailerDict = vidResults[0]
-        
-        if trailerDict["key"] != nil {
-            let key = String(describing: trailerDict["key"]!)
-            return key
-        } else {
-          return "XXX"
-        }
-    }
-    
+
 }
 
