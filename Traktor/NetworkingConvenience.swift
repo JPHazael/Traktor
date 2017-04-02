@@ -26,7 +26,7 @@ extension TraktClient{
             
             /* GUARD: Was there an error? */
             guard (error == nil) else {
-                sendError(error: "There was an error with your request: \(error)")
+                sendError(error: "There was an error with your request: \(String(describing: error))")
                 return
             }
             

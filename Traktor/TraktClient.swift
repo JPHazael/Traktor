@@ -19,14 +19,14 @@ class TraktClient : NSObject {
     
     //MARK: - Build an array of Movie structs
 
-    func getTrendingMovies(completionHandler:@escaping (_ moviesArray: [Movie], _ error: NSError?) -> Void)  {
-        self.buildTraktRequest(forURL: Constants.BaseURL) { (request) in
-        self.taskForGet(request: request, completionHandlerForGET: { (result, error) in
+    func getTrendingMovies(completionHandler:@escaping( _ moviesArray: [Movie], _ error: NSError?) -> Void)  {
+        self.buildTraktRequest(forURL: Constants.BaseURL) { [weak self](request) in
+        self?.taskForGet(request: request, completionHandlerForGET: { (result, error) in
             if error == nil{
-                self.getIDs(fromResult: result as! [[String : AnyObject]], completion: { (idArray) in
-                    self.createTMDBInfoURLs(forIDs: idArray, completion: { (infoURLArray) in
-                        self.getTMDBInfo(forURLs: infoURLArray, completion: { (resultsArray) in
-                            self.createMoviesArray(from: resultsArray, completion: { (moviesArray) in
+                self?.getIDs(fromResult: result as! [[String : AnyObject]], completion: { (idArray) in
+                    self?.createTMDBInfoURLs(forIDs: idArray, completion: { (infoURLArray) in
+                        self?.getTMDBInfo(forURLs: infoURLArray, completion: { (resultsArray) in
+                            self?.createMoviesArray(from: resultsArray, completion: { (moviesArray) in
                                 completionHandler(moviesArray, nil)
                                 })
                             })

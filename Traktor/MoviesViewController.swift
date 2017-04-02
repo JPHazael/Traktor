@@ -46,13 +46,13 @@ class MoviesViewController: UIViewController {
         refreshButton.titleLabel?.text = "Just a moment."
         refreshButton.isEnabled = false
         
-        TraktClient.sharedInstance.getTrendingMovies { (movies, error) in
+        TraktClient.sharedInstance.getTrendingMovies { [weak self] (movies, error) in
             if error == nil{
-                self.moviesArray = movies
+                self?.moviesArray = movies
                 DispatchQueue.main.async {
-                self.refreshButton.titleLabel?.text = "Load the newest trending movies!"
-                self.refreshButton.isEnabled = true
-                self.collectionView!.reloadData()
+                self?.refreshButton.titleLabel?.text = "Load the newest trending movies!"
+                self?.refreshButton.isEnabled = true
+                self?.collectionView!.reloadData()
                     }
                 }
                 else {
