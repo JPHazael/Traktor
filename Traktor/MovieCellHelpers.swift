@@ -24,15 +24,18 @@ extension MovieCell{
     
     func configureCell(for movie: Movie){
         
-        self.titleLabel.text = movie.title
-        self.genreLabel.text = movie.genres.joined(separator: ", ")
-        self.ratingLabel.text = movie.rating
-        self.descriptionTextView.text = movie.movieDescription
-        self.taglineTextfield.text = movie.tagline
-        self.imageView.imageFromUrl(urlString: movie.posterURL)
-        self.youtubeLink = movie.trailerURL
-        self.youtubeURL = "youtube://\(movie.ytKey!)"
-        self.disableTrailerButton(for: movie.ytKey!)
+        weak var weakSelf = self
+
+        
+        weakSelf?.titleLabel.text = movie.title
+        weakSelf?.genreLabel.text = movie.genres.joined(separator: ", ")
+        weakSelf?.ratingLabel.text = movie.rating
+        weakSelf?.descriptionTextView.text = movie.movieDescription
+        weakSelf?.taglineTextfield.text = movie.tagline
+        weakSelf?.imageView.imageFromUrl(urlString: movie.posterURL)
+        weakSelf?.youtubeLink = movie.trailerURL
+        weakSelf?.youtubeURL = "youtube://\(movie.ytKey!)"
+        weakSelf?.disableTrailerButton(for: movie.ytKey!)
     }
     
     
