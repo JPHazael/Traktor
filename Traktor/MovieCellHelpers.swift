@@ -6,7 +6,6 @@
 //  Copyright © 2017 JPDaines. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension MovieCell{
@@ -22,7 +21,7 @@ extension MovieCell{
     }
     
     
-    func configureCell(for movie: Movie){
+    func configureCell (for movie: Movie){ 
         
         weak var weakSelf = self
 

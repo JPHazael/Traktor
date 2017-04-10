@@ -49,9 +49,9 @@ class TraktClient : NSObject {
 
         for i in 0  ..< results.count{
             let result = results[i]
-            let movieDetails = result["movie"]
-            let movieIDs = movieDetails?.value(forKey: "ids") as! [String: AnyObject]
-            let tMDBID = movieIDs["tmdb"] as AnyObject
+            let movieDetails = result[Constants.TraktParameterKeys.MovieDetails]
+            let movieIDs = movieDetails?.value(forKey: Constants.TraktParameterKeys.MovieIDs) as! [String: AnyObject]
+            let tMDBID = movieIDs[Constants.TraktParameterKeys.TMDBID] as AnyObject
             idArray.append(tMDBID)
         }
         completion(idArray)
@@ -98,14 +98,15 @@ class TraktClient : NSObject {
         
         var moviesArray = [Movie]()
 
+        print(results[4])
         
         for i in 0  ..< results.count{
             let result = results[i]
             
             var newMovie = Movie()
             
-           if let title = result["title"] as? String, let description = result["overview"] as? String,
-            let tagline = result["tagline"] as? String, let genres = result["genres"]?.value(forKey: "name") as? [String]{
+           if let title = result[Constants.TMDBParameterKeys.Title] as? String, let description = result[Constants.TMDBParameterKeys.Overview] as? String,
+            let tagline = result[Constants.TMDBParameterKeys.Tagline] as? String, let genres = result[Constants.TMDBParameterKeys.Genres]?.value(forKey: Constants.TMDBParameterKeys.Name) as? [String]{
             
             newMovie.title = title
             newMovie.movieDescription = description
@@ -113,20 +114,20 @@ class TraktClient : NSObject {
             newMovie.genres = genres
             }
             
-            if let posterPath = result["poster_path"] as? String{
-                let posterURL = "https://image.tmdb.org/t/p/w342\(posterPath)"
+            if let posterPath = result[Constants.TMDBParameterKeys.PosterPath] as? String{
+                let posterURL = Constants.TMDBURLS.PosterURL + posterPath
                 newMovie.posterURL = posterURL
             }
             
-            if let videos = result["videos"]{
-                if let vidResults = videos.value(forKey: "results") as? [[String: AnyObject]]{
+            if let videos = result[Constants.TMDBParameterKeys.Videos]{
+                if let vidResults = videos.value(forKey: Constants.TMDBParameterKeys.TMDBResults) as? [[String: AnyObject]]{
                     newMovie.trailerURL = createTrailerURL(for: vidResults)
                     newMovie.ytKey = getYouTubeKey(for: vidResults)
                 }
             }
             
-            if let releases = result["releases"]{
-                if let countries = releases.value(forKey: "countries") as? [[String: AnyObject]]{
+            if let releases = result[Constants.TMDBParameterKeys.Releases]{
+                if let countries = releases.value(forKey: Constants.TMDBParameterKeys.Countries) as? [[String: AnyObject]]{
                     newMovie.rating = getRating(from: countries)
                 }
             }

@@ -32,9 +32,9 @@ extension TraktClient{
         var certArray = [String]()
         
         for i in countries{
-            if String(describing: i["iso_3166_1"]!) == "US"{
-                if String(describing: i["certification"]!) != ""{
-                    let cert = String(describing:i["certification"]!)
+            if String(describing: i[Constants.TMDBParameterKeys.CountryCode]!) == Constants.TMDBParameterKeys.UnitedStates{
+                if String(describing: i[Constants.TMDBParameterKeys.Certification]!) != ""{
+                    let cert = String(describing:i[Constants.TMDBParameterKeys.Certification]!)
                     certArray.append(cert)
                 }
             }
@@ -43,7 +43,7 @@ extension TraktClient{
             let finalCert = certArray[0]
             return finalCert
         } else{
-            return "Not Rated"
+            return Constants.TMDBParameterKeys.NotRated
         }
     }
     
@@ -53,12 +53,12 @@ extension TraktClient{
     func createTrailerURL(for vidResults:[[String: AnyObject]])->String{
         let trailerDict = vidResults[0]
         
-        if trailerDict["key"] != nil {
-            let key = String(describing: trailerDict["key"]!)
+        if trailerDict[Constants.TMDBParameterKeys.Key] != nil {
+            let key = String(describing: trailerDict[Constants.TMDBParameterKeys.Key]!)
             let youTubeURL = Constants.TMDBURLS.YouTubeLink + key
             return youTubeURL
         } else {
-            return "XXX"
+            return Constants.TMDBParameterKeys.NoValue
         }
         
     }
@@ -68,11 +68,11 @@ extension TraktClient{
     func getYouTubeKey(for vidResults:[[String: AnyObject]])->String{
         let trailerDict = vidResults[0]
         
-        if trailerDict["key"] != nil {
+        if trailerDict[Constants.TMDBParameterKeys.Key] != nil {
             let key = String(describing: trailerDict["key"]!)
             return key
         } else {
-            return "XXX"
+            return Constants.TMDBParameterKeys.NoValue
         }
     }
 }

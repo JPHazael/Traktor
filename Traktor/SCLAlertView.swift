@@ -6,8 +6,11 @@
 //  Copyright (c) 2014 Viktor Radchenko. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
+
+
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
