@@ -11,7 +11,7 @@ extension TraktClient{
     
     // Build the URL to get the trending movies from trakt
     
-    func buildTraktRequest(forURL urlString: String, completion: (_ request: URLRequest)-> Void){
+    internal func buildTraktRequest(forURL urlString: String, completion: (_ request: URLRequest)-> Void){
         let url = URL(string: urlString)!
         var request = URLRequest(url: url)
         
@@ -28,7 +28,7 @@ extension TraktClient{
     // from the array of all releases of a movie from all countries get the US releases
     // then get an array of ratings for each US release and take the top entry from the array
     
-    func getRating(from countries: [[String: AnyObject]])->String{
+    internal func getRating(from countries: [[String: AnyObject]])->String{
         var certArray = [String]()
         
         for i in countries{
@@ -50,7 +50,7 @@ extension TraktClient{
     
     // get a youtube link for the trailer
     
-    func createTrailerURL(for vidResults:[[String: AnyObject]])->String{
+    internal func createTrailerURL(for vidResults:[[String: AnyObject]])->String{
         let trailerDict = vidResults[0]
         
         if trailerDict[Constants.TMDBParameterKeys.Key] != nil {
@@ -65,7 +65,7 @@ extension TraktClient{
     
     // seperate the youtube key for native app URL
     
-    func getYouTubeKey(for vidResults:[[String: AnyObject]])->String{
+    internal func getYouTubeKey(for vidResults:[[String: AnyObject]])->String{
         let trailerDict = vidResults[0]
         
         if trailerDict[Constants.TMDBParameterKeys.Key] != nil {

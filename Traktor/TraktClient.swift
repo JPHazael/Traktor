@@ -43,7 +43,7 @@ class TraktClient : NSObject {
     //Get IDs from all the movies in the dictionary
     
     
-    func getIDs(fromResult results: [[String: AnyObject]], completion: (_ idArray: [AnyObject])-> Void){
+    private func getIDs(fromResult results: [[String: AnyObject]], completion: (_ idArray: [AnyObject])-> Void){
         
         var idArray = [AnyObject!]()
 
@@ -60,7 +60,7 @@ class TraktClient : NSObject {
 
     //Use IDs to create URLS for the TMDB API
     
-    func createTMDBInfoURLs(forIDs ids: [AnyObject], completion: (_ infoURLArray: [String])-> Void){
+    private func createTMDBInfoURLs(forIDs ids: [AnyObject], completion: (_ infoURLArray: [String])-> Void){
         
         var inforURLArray = [String]()
         
@@ -75,7 +75,7 @@ class TraktClient : NSObject {
     
     // get and parse the JSON from TMDB for each movie in the trending 10
     
-   func getTMDBInfo(forURLs URLs: [String], completion: @escaping (_ resultsArray: [[String:AnyObject]])-> Void){
+   private func getTMDBInfo(forURLs URLs: [String], completion: @escaping (_ resultsArray: [[String:AnyObject]])-> Void){
     var resultsArray = [[String:AnyObject]]()
 
     
@@ -94,7 +94,7 @@ class TraktClient : NSObject {
     
     // Save TMDB info to a dictionary of Movie Structs
     
-    func createMoviesArray(from results:[[String:AnyObject]], completion: @escaping (_ moviesArray: [Movie])-> Void){
+    private func createMoviesArray(from results:[[String:AnyObject]], completion: @escaping (_ moviesArray: [Movie])-> Void){
         
         var moviesArray = [Movie]()
 

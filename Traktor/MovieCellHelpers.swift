@@ -13,7 +13,7 @@ extension MovieCell{
     
     //MARK: - Helper Methods
     
-    func disableTrailerButton(for key: String){
+    internal func disableTrailerButton(for key: String){
         if key == "XXX"{
             trailerButton.isEnabled = false
             trailerButton.titleLabel?.text  = "Not Available"
@@ -21,7 +21,7 @@ extension MovieCell{
     }
     
     
-    func configureCell (for movie: Movie){ 
+    internal func configureCell (for movie: Movie){
         
         weak var weakSelf = self
 

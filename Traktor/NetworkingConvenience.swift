@@ -13,7 +13,7 @@ extension TraktClient{
     //MARK: - Create the task
     // Create the data task and make sure you get a successful http response and the data exists
     
-    func taskForGet (request: URLRequest, completionHandlerForGET:@escaping (_ result: AnyObject?, _ error: NSError?) -> Void)  {
+    internal func taskForGet (request: URLRequest, completionHandlerForGET:@escaping (_ result: AnyObject?, _ error: NSError?) -> Void)  {
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             
@@ -52,7 +52,7 @@ extension TraktClient{
     
     // MARK: - Parse the JSON
     // given raw JSON, return a usable Foundation object
-    func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
+    internal func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (_ result: AnyObject?, _ error: NSError?) -> Void) {
         
         var parsedResult: Any!
         do {
